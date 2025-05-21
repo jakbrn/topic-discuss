@@ -1,9 +1,9 @@
-"use client"
+'use client'
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
-import { getCurrentUser, logout as logoutApi } from "@/lib/api"
-import { useRouter } from "next/navigation"
-import { useToast } from "@/hooks/use-toast"
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
+import { getCurrentUser, logout as logoutApi } from '@/lib/api'
+import { useRouter } from 'next/navigation'
+import { useToast } from '@/hooks/use-toast'
 
 interface User {
   id: string
@@ -35,7 +35,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       try {
         const userData = await getCurrentUser()
         setUser(userData)
-      } catch (error) {
+      } catch {
         setUser(null)
       } finally {
         setLoading(false)
@@ -49,17 +49,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       await logoutApi()
       setUser(null)
-      router.push("/")
+      router.push('/')
       router.refresh()
       toast({
-        title: "Logged out",
-        description: "You have been logged out successfully.",
+        title: 'Logged out',
+        description: 'You have been logged out successfully.',
       })
-    } catch (error) {
+    } catch {
       toast({
-        title: "Error",
-        description: "Failed to log out. Please try again.",
-        variant: "destructive",
+        title: 'Error',
+        description: 'Failed to log out. Please try again.',
+        variant: 'destructive',
       })
     }
   }

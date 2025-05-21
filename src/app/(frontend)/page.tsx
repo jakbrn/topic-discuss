@@ -1,11 +1,7 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { getPayload } from 'payload'
-import config from '@payload-config'
 
 export default async function Home() {
-  const payload = await getPayload({ config })
-
   return (
     <section className="py-12 md:py-24 lg:py-32 flex flex-col items-center text-center space-y-6">
       <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">

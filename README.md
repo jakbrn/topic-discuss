@@ -16,12 +16,12 @@
 - system autentykacji i użytkowników (model użytkownicy, logowanie, rejestracja itd.)
 - co najmniej dwie dodatkowe domeny danych poza użytkownikami (np. posty i grupy w przypadku serwisu społecznościowego)
 - crudowe endpointy do obsługi modeli danych oraz wszystkie wymagane do realizowania logiki projektu
+- konteneryzacja aplikacji
 
 ### Niezrealizowane wymagania (na ten moment):
 
 - skrócona dokumentacja (głównie do czego służy projekt i jak korzystać z jego API)
 - zawarta obsługa websocketów w projekcie, realizująca jakąś logikę w projekcie (np. czat, powiadomienia itd.)
-- konteneryzacja aplikacji (produkcyjna)
 
 # Jak odpalić?
 

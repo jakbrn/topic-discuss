@@ -103,7 +103,7 @@ export default function CreateTopicPage() {
       })
 
       router.push('/topics')
-    } catch (error) {
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to create topic. Please try again.',

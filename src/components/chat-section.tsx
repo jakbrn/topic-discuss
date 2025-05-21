@@ -4,14 +4,12 @@ import type React from 'react'
 
 import { useState, useEffect, useRef } from 'react'
 import { useAuth } from '@/hooks/use-auth'
-import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { formatDistanceToNow } from 'date-fns'
 import { useToast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation'
-import { Loader2 } from 'lucide-react'
-import { Message } from '@/payload-types'
+import { Message, User } from '@/payload-types'
 
 interface ChatSectionProps {
   topicId: string
@@ -70,7 +68,7 @@ export default function ChatSection({ topicId, initialMessages }: ChatSectionPro
       <div className="h-[500px] overflow-y-auto p-4 space-y-4">
         {messages.length > 0 ? (
           messages.map((message) => {
-            const sender = message.createdBy as any
+            const sender = message.createdBy as User
             const isCurrentUser = user && sender?.id === user.id
 
             return (
@@ -82,7 +80,10 @@ export default function ChatSection({ topicId, initialMessages }: ChatSectionPro
                   className={`flex max-w-[80%] ${isCurrentUser ? 'flex-row-reverse' : 'flex-row'}`}
                 >
                   <Avatar className={`h-8 w-8 ${isCurrentUser ? 'ml-2' : 'mr-2'}`}>
-                    <AvatarImage src={sender?.avatar || '/placeholder.svg'} alt={sender?.name} />
+                    <AvatarImage
+                      src={(sender?.avatar as string) || '/placeholder.svg'}
+                      alt={sender?.name}
+                    />
                     <AvatarFallback>{sender?.name?.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>

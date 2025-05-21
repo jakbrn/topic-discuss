@@ -1,33 +1,40 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { useToast } from "@/hooks/use-toast"
-import { register } from "@/lib/api"
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+import { Button } from '@/components/ui/button'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { useToast } from '@/hooks/use-toast'
+import { register } from '@/lib/api'
 
 const formSchema = z
   .object({
     name: z.string().min(2, {
-      message: "Name must be at least 2 characters.",
+      message: 'Name must be at least 2 characters.',
     }),
     email: z.string().email({
-      message: "Please enter a valid email address.",
+      message: 'Please enter a valid email address.',
     }),
     password: z.string().min(8, {
-      message: "Password must be at least 8 characters.",
+      message: 'Password must be at least 8 characters.',
     }),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match.",
-    path: ["confirmPassword"],
+    message: 'Passwords do not match.',
+    path: ['confirmPassword'],
   })
 
 export default function RegisterPage() {
@@ -38,10 +45,10 @@ export default function RegisterPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
   })
 
@@ -56,16 +63,16 @@ export default function RegisterPage() {
       })
 
       toast({
-        title: "Registration successful",
-        description: "Your account has been created successfully.",
+        title: 'Registration successful',
+        description: 'Your account has been created successfully.',
       })
 
-      router.push("/auth/login")
-    } catch (error) {
+      router.push('/auth/login')
+    } catch {
       toast({
-        title: "Registration failed",
-        description: "An error occurred during registration. Please try again.",
-        variant: "destructive",
+        title: 'Registration failed',
+        description: 'An error occurred during registration. Please try again.',
+        variant: 'destructive',
       })
     } finally {
       setIsSubmitting(false)
@@ -138,14 +145,14 @@ export default function RegisterPage() {
           />
 
           <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? "Creating account..." : "Sign up"}
+            {isSubmitting ? 'Creating account...' : 'Sign up'}
           </Button>
         </form>
       </Form>
 
       <div className="text-center mt-6">
         <p className="text-sm text-muted-foreground">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <Link href="/auth/login" className="text-primary hover:underline">
             Log in
           </Link>

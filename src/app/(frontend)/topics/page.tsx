@@ -16,7 +16,7 @@ export default async function TopicsPage({
 
   const category = searchParams.category
 
-  const { docs: topics, totalDocs } = await payload.find({
+  const { docs: topics } = await payload.find({
     collection: 'topics',
     sort: '-createdAt',
     limit: 12,

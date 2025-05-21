@@ -1,0 +1,24 @@
+services:
+  payload:
+    build: .
+    volumes:
+      - media:/app/media
+    depends_on:
+      - mongo
+    environment:
+      - DATABASE_URI=mongodb://mongo/topic-discuss
+    env_file:
+      - .env
+
+  mongo:
+    image: mongo:latest
+    command:
+      - --storageEngine=wiredTiger
+    volumes:
+      - data:/data/db
+    logging:
+      driver: none
+
+volumes:
+  media:
+  data:

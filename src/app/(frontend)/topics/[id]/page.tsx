@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { formatDistanceToNow } from 'date-fns'
 import ChatSection from '@/components/chat-section'
 import OnlineUsers from '@/components/online-users'
-import { Message, Topic } from '@/payload-types'
+import { Message, Topic, User } from '@/payload-types'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
@@ -33,7 +33,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
       depth: 1,
     })
 
-    const creator = topic.createdBy as any
+    const creator = topic.createdBy as User
 
     return (
       <div className="max-w-6xl mx-auto">
@@ -47,7 +47,10 @@ export default async function TopicPage({ params }: TopicPageProps) {
 
           <div className="flex items-center text-sm text-muted-foreground">
             <Avatar className="h-6 w-6 mr-2">
-              <AvatarImage src={creator?.avatar || '/placeholder.svg'} alt={creator?.name} />
+              <AvatarImage
+                src={(creator?.avatar as string) || '/placeholder.svg'}
+                alt={creator?.name}
+              />
               <AvatarFallback>{creator?.name?.charAt(0)}</AvatarFallback>
             </Avatar>
             <span>
@@ -67,7 +70,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
         </div>
       </div>
     )
-  } catch (error) {
+  } catch {
     notFound()
   }
 }
