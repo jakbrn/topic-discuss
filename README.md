@@ -4,6 +4,11 @@
 
 **TopicDiscuss** to platforma forum dyskusyjnego zbudowana przy użyciu **Next.js** i **PayloadCMS**, która umożliwia użytkownikom odkrywanie interesujących ich tematów i angażowanie się w wartościowe rozmowy ze społecznością. Aplikacja pozwala użytkownikom przeglądać tematy, uczestniczyć w dyskusjach oraz tworzyć własne wątki konwersacji. (interfejs wykonany przez [v0](https://v0.dev/))
 
+### Dokumentacja API
+
+[Rest API](https://payloadcms.com/docs/rest-api/overview)<br />
+[GraphQL](https://payloadcms.com/docs/graphql/overview)
+
 ### Funkcjonalności:
 
 - Uwierzytelnianie użytkowników (rejestracja i logowanie)
@@ -13,6 +18,7 @@
 ### Zrealizowane wymagania projektowe:
 
 - skrócony opis projektu
+- skrócona dokumentacja (głównie do czego służy projekt i jak korzystać z jego API)
 - system autentykacji i użytkowników (model użytkownicy, logowanie, rejestracja itd.)
 - co najmniej dwie dodatkowe domeny danych poza użytkownikami (np. posty i grupy w przypadku serwisu społecznościowego)
 - crudowe endpointy do obsługi modeli danych oraz wszystkie wymagane do realizowania logiki projektu
@@ -20,7 +26,6 @@
 
 ### Niezrealizowane wymagania (na ten moment):
 
-- skrócona dokumentacja (głównie do czego służy projekt i jak korzystać z jego API)
 - zawarta obsługa websocketów w projekcie, realizująca jakąś logikę w projekcie (np. czat, powiadomienia itd.)
 
 # Jak odpalić?
